@@ -19,11 +19,14 @@ class VariableKotlinActivity : AppCompatActivity() {
         var clickCount = 0
         val startTime = System.currentTimeMillis()
         val sTimeStamp = SimpleDateFormat("HH:mm:ss", Locale.KOREA).format(startTime) //소문자 쓰는 이유는 Month랑 헷갈리지 말라고
+        val txtElapsedTime = findViewById<TextView>(R.id.txtElapsedTime)
 
         txtActivityStartTime.text = "Activity start tune = ${sTimeStamp}"
 
         btnClickMe.setOnClickListener {
             clickCount++
+            var elapsedSeconds : Long = ((System.currentTimeMillis() - startTime) / 1000.0).toLong()
+            txtElapsedTime.setText("${elapsedSeconds} seconds elapsed")
             txtCountBtnClicks.text = "Button clicks = ${clickCount}"
         }
     }
